@@ -1,4 +1,4 @@
-# Fun with the Novation Launchpad and Clojure
+# Conway's [Game of Life](http://en.wikipedia.org/wiki/Conway's_Game_of_Life) on the Novation Launchpad
 
 [Demo on Youtube](http://www.youtube.com/watch?v=U3m2rWUn3yA)
 
