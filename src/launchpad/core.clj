@@ -1,9 +1,9 @@
-(ns launchpad.core
-    (:gen-class :main true))
+(ns launchpad.core (:gen-class :main true))
 
 ; Includes
 (use 'midi)
 (use 'matchure)
+(use 'seesaw.core)
 
 ; Constants
 (def coords        (for [x (range 0 8) y (range 0 8)] [x y]))
@@ -15,17 +15,33 @@
 (def running       (atom true))
 (def speed         (atom 100))
 
+(defn exit [&args] (reset! running false))
+
+(native!)
+
+(def life-window   (frame  :title    "Conway's Game of Life on the Novation Launchpad"
+                           :on-close :exit))
+
+(def life-button   (button :text  "Exit"))
+
+(config! life-window :content life-button)
+(listen  life-button :action  exit)
+
 ; Declarations
-(declare main cell-toggle central side switch stop-button handle-events neighbours set-cell glider handler bound curry getZ clear-device step render toggle newstate alive? cell-on cell-off cell-to-note note-to-cell)
+(declare main cell-toggle central side switch stop-button handle-events neighbours set-cell glider handler bound curry getZ clear-device step render newstate alive? cell-on cell-off cell-to-note note-to-cell)
 
 (defn -main [] (main))
 
 ; Main
-(defn main [] (do (handle-events)
+(defn main [] (do (-> life-window pack! show!)
+                  (config! life-window :size [500 :by 100])
+                  (handle-events)
                   (clear-device)
                   (glider)
                   (while @running (if @playing (step @state))
-                                  (Thread/sleep @speed))))
+                                  (Thread/sleep @speed)))
+                  (clear-device)
+                  (System/exit 0))
 
 ; Library
 
@@ -47,7 +63,7 @@
 (defn faster [x] (* 0.8 x))
 
 (defn setup-side-bindings [] (reset! side-bindings (apply hash-map (apply concat
-  [(bind-button [8 0] #(do (reset! running false) (clear-device) (System/exit 0)))
+  [(bind-button [8 0] #(reset! running false))
    (bind-button [8 4] #(swap!  playing not))
    (bind-button [8 5] #(swap!  speed faster))
    (bind-button [8 6] #(swap!  speed slower))]))))

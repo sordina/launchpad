@@ -14,3 +14,7 @@ The center 64 buttons can be pressed to flip the state of a cell.
     'trk on' - Speeds up the game
     'solo'   - Slows down the game
     'vol'    - Exit the program
+
+## TODO
+
+Create a window to exit the program - https://gist.github.com/1441520
