@@ -2,6 +2,8 @@
 
 [Demo on Youtube](http://www.youtube.com/watch?v=U3m2rWUn3yA)
 
+<img src="https://raw.github.com/sordina/launchpad/master/images/launchpad-life.png" alt="Life on the Launchpad" />
+
 A stand-alone Jar package is available in the [downloads](https://github.com/sordina/launchpad/downloads) section.
 
 ## Controls
