@@ -13,3 +13,4 @@ The center 64 buttons can be pressed to flip the state of a cell.
     'stop'   - Pauses and unpauses the game
     'trk on' - Speeds up the game
     'solo'   - Slows down the game
+    'vol'    - Exit the program

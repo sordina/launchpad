@@ -12,6 +12,7 @@
 (def state         (atom {}))
 (def side-bindings (atom {}))
 (def playing       (atom false))
+(def running       (atom true))
 (def speed         (atom 100))
 
 ; Declarations
@@ -22,8 +23,9 @@
 ; Main
 (defn main [] (do (handle-events)
                   (clear-device)
-                  (while true (if @playing (step @state))
-                              (Thread/sleep @speed))))
+                  (glider)
+                  (while @running (if @playing (step @state))
+                                  (Thread/sleep @speed))))
 
 ; Library
 
@@ -45,9 +47,10 @@
 (defn faster [x] (* 0.8 x))
 
 (defn setup-side-bindings [] (reset! side-bindings (apply hash-map (apply concat
-  [(bind-button [8 4] #(swap! playing not))
-   (bind-button [8 5] #(swap! speed faster))
-   (bind-button [8 6] #(swap! speed slower))]))))
+  [(bind-button [8 0] #(do (reset! running false) (clear-device) (System/exit 0)))
+   (bind-button [8 4] #(swap!  playing not))
+   (bind-button [8 5] #(swap!  speed faster))
+   (bind-button [8 6] #(swap!  speed slower))]))))
 
 (defn side [xy] ((@side-bindings xy)))
 
@@ -83,7 +86,6 @@
 (defn set-cell [xy v] (swap! state (fn [m] (assoc m xy v))))
 
 (defn clear-device [] (do (doseq [xy coords] (cell-off xy)))
-                          (glider)
                           (setup-side-bindings))
 
 (defn glider [] (do (cell-on [4 4])
