@@ -15,6 +15,8 @@ The center 64 buttons can be pressed to flip the state of a cell.
     'solo'   - Slows down the game
     'vol'    - Exit the program
 
-## TODO
+## Notes
 
-Create a window to exit the program - https://gist.github.com/1441520
+This is an extremely poorly written program, constructed as a proof of concept and an
+excuse to write some Clojure. If you have any feedback about best practices I will be
+more than happy to hear it!
