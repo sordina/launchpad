@@ -88,11 +88,11 @@
 
 (defn bound [a] (mod a 8))
 
-(defn alive? [c ns] (cond-match [c ns] [0  3] 1
-                                       [0  _] 0
-                                       [1  3] 1
-                                       [1  4] 1
-                                       [1  _] 0 ))
+(defn-match alive? ([0  3] 1)
+                   ([0  _] 0)
+                   ([1  3] 1)
+                   ([1  4] 1)
+                   ([1  _] 0))
 
 (defn cell-on     [xy] (do (set-cell xy 1) (midi-note-on  lights (cell-to-note xy) 127)))
 (defn cell-off    [xy] (do (set-cell xy 0) (midi-note-off lights (cell-to-note xy))))
