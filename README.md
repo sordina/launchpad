@@ -6,6 +6,8 @@
 
 A stand-alone Jar package is available in the [downloads](https://github.com/sordina/launchpad/downloads) section.
 
+The Launchpad must be plugged in before starting the app.
+
 ## Controls
 
 The center 64 buttons can be pressed to flip the state of a cell.
@@ -18,6 +20,8 @@ The center 64 buttons can be pressed to flip the state of a cell.
     'vol'    - Exit the program
 
 ## Notes
+
+BEWARE...
 
 This is an extremely poorly written program, constructed as a proof of concept and an
 excuse to write some Clojure. If you have any feedback about best practices I will be
