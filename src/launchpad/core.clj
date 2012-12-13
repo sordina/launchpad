@@ -27,12 +27,11 @@
 (config! life-window :content life-button)
 (listen  life-button :action  exit)
 
-; Declarations
+; Declarations... DONT JUDGE ME!!!!
 (declare main cell-toggle central side switch stop-button handle-events neighbours set-cell glider handler bound curry getZ clear-device step render newstate alive? cell-on cell-off cell-to-note note-to-cell)
 
 (defn -main [] (main))
 
-; Main
 (defn main [] (do (-> life-window pack! show!)
                   (config! life-window :size [500 :by 100])
                   (handle-events)
