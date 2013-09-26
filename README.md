@@ -21,6 +21,9 @@ The center 64 buttons can be pressed to flip the state of a cell.
 
 ## Notes
 
+You will need to install a [driver](http://global.novationmusic.com/support/product-downloads?product=Launchpad#Software)
+for the Launchpad in order to be able to use it.
+
 BEWARE...
 
 This is an extremely poorly written program, constructed as a proof of concept and an
